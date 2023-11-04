@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class RotateColumn : MonoBehaviour
+public class RotateColumn : InteractionItem
 {
     public event Action ColumnTurned;
 
@@ -14,11 +14,23 @@ public class RotateColumn : MonoBehaviour
     private float _angleRotation = 90;
     private Quaternion _targetRotation;
 
+    private bool _isRotating = false;
+
+    public override void Iteract()
+    {
+        ActivateRotate();
+    }
+
     public void ActivateRotate()
     {
         if (_activateColumn.GetColumnCondition() == false)
         {
             Debug.Log("Колонна ещё не активирована");
+            return;
+        }
+        if (_isRotating == true)
+        {
+            Debug.Log("Колонна уже вращается");
             return;
         }
 
@@ -32,6 +44,8 @@ public class RotateColumn : MonoBehaviour
 
     private IEnumerator RotateObject()
     {
+        _isRotating = true;
+
         Quaternion startRotation = _column.transform.rotation;
 
         float startTime = Time.time;
@@ -48,5 +62,6 @@ public class RotateColumn : MonoBehaviour
 
         _column.transform.rotation = _targetRotation;
         ColumnTurned?.Invoke();
+        _isRotating = false;
     }
 }

@@ -14,7 +14,7 @@ public class ActivateColumn : MonoBehaviour
         return _isActive;
     }
 
-    public void MakeColumnActive()
+    public void SetColumnActive()
     {   
         if (_isActive == true)
         {

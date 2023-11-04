@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class ColumnSigns : MonoBehaviour
 {
+    public event Action ColumnPositionedCorrectly;
+
     [SerializeField] private RotateColumn _rotateColumn;
 
     [SerializeField] private Signs[] _signs;
@@ -10,6 +13,8 @@ public class ColumnSigns : MonoBehaviour
     [SerializeField] private Signs _victorySign;
 
     private int _currentIndex;
+
+    private bool _columnIsStandingCorrectly;
 
     private void OnEnable()
     {
@@ -39,9 +44,19 @@ public class ColumnSigns : MonoBehaviour
         if(_currnetSign == _victorySign)
         {
             Debug.Log("Правильное распложение");
+            _columnIsStandingCorrectly = true;
+            ColumnPositionedCorrectly?.Invoke();
+            
+        }
+        else
+        {
+            _columnIsStandingCorrectly = false;
         }
     }
-    
+    public bool CheckWhetherColumnIsStandingCorrectly()
+    {
+        return _columnIsStandingCorrectly;
+    }
 }
 
 public enum Signs
