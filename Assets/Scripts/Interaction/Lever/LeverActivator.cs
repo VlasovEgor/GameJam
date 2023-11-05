@@ -5,6 +5,7 @@ public class LeverActivator : InteractionItem
 {
     [SerializeField] private GameObject _lever;
     [SerializeField] private ActivateColumn _activateColumn;
+    [SerializeField] private Door _door;
     [Space]
     [SerializeField] private float _speedRotation;
     [SerializeField] private float _angleRotation = -35;
@@ -24,7 +25,6 @@ public class LeverActivator : InteractionItem
             return;
         }
 
-        // _targetRotation = _lever.transform.rotation * Quaternion.Euler(_angleRotation, 0, 0);
         _targetRotation =  Quaternion.Euler(_angleRotation, 0, 0);
         StartCoroutine(RotateObject());
 
@@ -52,5 +52,6 @@ public class LeverActivator : InteractionItem
         _lever.transform.rotation = _targetRotation;
 
         _activateColumn.SetColumnActive();
+        _door.Open();
     }
 }
