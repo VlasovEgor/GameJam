@@ -6,8 +6,10 @@ public class MakeDamageOnTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerHealth>())
+        Debug.Log("Attack1");
+        if (other.GetComponent<PlayerHealth>() == true)
         {
+            Debug.Log("Attack2");
             other.GetComponent<PlayerHealth>().TakeDamage(DamageValue);
         }
     }
