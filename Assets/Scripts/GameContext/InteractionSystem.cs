@@ -48,6 +48,4 @@ public class InteractionSystem : MonoBehaviour
             _currentInteractionItem.Iteract();
         }
     }
-
-   
 }

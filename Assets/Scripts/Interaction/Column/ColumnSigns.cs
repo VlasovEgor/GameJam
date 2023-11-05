@@ -6,7 +6,7 @@ public class ColumnSigns : MonoBehaviour
     public event Action ColumnPositionedCorrectly;
 
     [SerializeField] private RotateColumn _rotateColumn;
-
+    [Space]
     [SerializeField] private Signs[] _signs;
     [Space]
     [SerializeField] private Signs _currnetSign;
@@ -68,4 +68,3 @@ public enum Signs
     Eye,
     Human
 }
-
