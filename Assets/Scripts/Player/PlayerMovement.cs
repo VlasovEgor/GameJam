@@ -41,6 +41,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
 
+    private bool wasGrounded;
+    private bool wasFalling;
+    private float StartOfFall;
+
+    [SerializeField]
+    private float minimumFall = 2f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -66,6 +73,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!wasFalling && IsFalling())
+        {
+            StartOfFall = transform.position.y;
+        }
+
+        if(!wasGrounded && grounded)
+        {
+            float fallDistance = StartOfFall - transform.position.y;
+            if(fallDistance > minimumFall)
+            {
+                Debug.Log("Take Damage " + fallDistance);
+            }
+        }
+
+        wasGrounded = grounded;
+        wasFalling = IsFalling();
+
         MovePlayer();
     }
 
@@ -121,5 +145,10 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump()
     {
         readyToJump = true;
+    }
+
+    private bool IsFalling()
+    {
+        return (!grounded && rb.velocity.y < 0);
     }
 }
