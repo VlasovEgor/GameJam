@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class Artifact : InteractionItem
 {
-    [SerializeField] private GameObject _stone;
+    [SerializeField] private GameObject _artifact;
+    [SerializeField] protected PlayerTeleport _playerTeleport;
+
     public override void Iteract()
     {
         Activate();
@@ -11,7 +13,8 @@ public class Artifact : InteractionItem
     private void Activate()
     {
         Debug.Log("рш онднапюк йюлемэ");
-        _stone.SetActive(false);
+        _playerTeleport.SetActiveTrue();
+        _artifact.SetActive(false);
     }
    
 }

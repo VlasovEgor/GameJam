@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerTeleport : MonoBehaviour
@@ -13,19 +13,19 @@ public class PlayerTeleport : MonoBehaviour
     [SerializeField]
     private ParticleSystem particleSys;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool _isActive = false;
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(TeleportKey))
+        if (Input.GetKeyDown(TeleportKey) && _isActive == true)
         {
             StartCoroutine(Teleport());
         }
+    }
+
+    public void SetActiveTrue()
+    {
+        _isActive = true;
     }
 
     IEnumerator Teleport()

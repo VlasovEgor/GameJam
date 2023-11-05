@@ -48,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float minimumFall = 2f;
 
+    [SerializeField]
+    private PlayerHealth _playerHealth;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -84,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
             if(fallDistance > minimumFall)
             {
                 Debug.Log("Take Damage " + fallDistance);
+                _playerHealth.TakeDamage(fallDistance);
             }
         }
 

@@ -6,7 +6,6 @@ public class HealthBar : MonoBehaviour
 	[SerializeField] private PlayerHealth _playerHealth;
 
 	[SerializeField] private Slider slider;
-	[SerializeField] private Gradient gradient;
 	[SerializeField] private Image fill;
 
     private void Awake()
@@ -30,7 +29,5 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(float health)
 	{
 		slider.value = health;
-
-		fill.color = gradient.Evaluate(slider.normalizedValue);
 	}
 }
