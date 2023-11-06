@@ -51,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private PlayerHealth _playerHealth;
 
+    [SerializeField] private AudioSource _audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -121,11 +123,24 @@ public class PlayerMovement : MonoBehaviour
         if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            if(moveDirection != Vector3.zero)
+            {
+                if (_audioSource.isPlaying) return;
+
+                _audioSource.Play();
+            }
+            else
+            {
+                _audioSource.Stop();
+            }
+            
         }
         else if(!grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
+
+
     }
 
     private void SpeedControl()

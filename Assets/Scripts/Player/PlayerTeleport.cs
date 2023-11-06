@@ -16,6 +16,8 @@ public class PlayerTeleport : MonoBehaviour
     [SerializeField]
     private bool _isActive = false;
 
+    [SerializeField] private AudioSource _audioSource;
+
     void Update()
     {
         if (Input.GetKeyDown(TeleportKey) && _isActive == true)
@@ -33,6 +35,7 @@ public class PlayerTeleport : MonoBehaviour
     {
         InPast = !InPast;
         particleSys.Play();
+        _audioSource.Play();
         yield return new WaitForSeconds(2.5f);
         particleSys.Stop();
         if (InPast)
