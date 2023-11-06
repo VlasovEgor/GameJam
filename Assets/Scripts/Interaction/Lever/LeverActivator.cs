@@ -10,6 +10,8 @@ public class LeverActivator : InteractionItem
     [SerializeField] private float _speedRotation;
     [SerializeField] private float _angleRotation = -35;
 
+    [SerializeField] private AudioSource _audioSource;
+
     private Quaternion _targetRotation;
     private bool _isActive = false;
 
@@ -25,6 +27,7 @@ public class LeverActivator : InteractionItem
             return;
         }
 
+        _audioSource.Play();
         _targetRotation =  Quaternion.Euler(_angleRotation, 0, 0);
         StartCoroutine(RotateObject());
 

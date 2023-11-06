@@ -5,6 +5,8 @@ public class PlatfromActivator : MonoBehaviour
     [SerializeField] private Transform _spawnPosition;
     [SerializeField] private GameObject _stone;
 
+    [SerializeField] private AudioSource _audioSource;
+
     private bool IsActive = false;
 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +21,7 @@ public class PlatfromActivator : MonoBehaviour
             return;
         }
 
+        _audioSource.Play();
         Instantiate(_stone, _spawnPosition.position, Quaternion.identity);
         IsActive = true;
     }

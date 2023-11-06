@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private float _regenerationSpeed;
 
+    [SerializeField] private AudioSource _audioSource;
+
     private bool _isRegenerationEnabled = false;
 
     private void Update()
@@ -26,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth -= _damage;
 
         _isRegenerationEnabled = false;
-
+        _audioSource.Play();
         HealthChanged?.Invoke(_currentHealth);
 
         if (_currentHealth <= 0f)

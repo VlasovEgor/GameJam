@@ -10,6 +10,7 @@ public class RotateColumn : InteractionItem
     [SerializeField] private ActivateColumn _activateColumn;
     [Space]
     [SerializeField] private float _speedRotation;
+    [SerializeField] private AudioSource _audioSource;
 
     private float _angleRotation = 90;
     private Quaternion _targetRotation;
@@ -37,6 +38,7 @@ public class RotateColumn : InteractionItem
         Debug.Log("ÂÆÓÕ");
 
         _targetRotation = _column.transform.rotation * Quaternion.Euler(0, _angleRotation, 0);
+        _audioSource.Play();
         StartCoroutine(RotateObject());
        
     }
