@@ -40,11 +40,11 @@ public class PlayerTeleport : MonoBehaviour
         particleSys.Stop();
         if (InPast)
         {
-            gameObject.transform.position += new Vector3(80f, 0f, 0f);
+            gameObject.transform.position += new Vector3(70f, 0f, 0f);
         }
         else
         {
-            gameObject.transform.position -= new Vector3(80f, 0f, 0f);
+            gameObject.transform.position -= new Vector3(70f, 0f, 0f);
         }
     }
 }

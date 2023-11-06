@@ -5,6 +5,10 @@ public class ColumnsSystem : MonoBehaviour
     private ColumnSigns[] _signs;
     private int _numberCorrectlyPlacedColumns;
 
+
+    [SerializeField] private GameObject _oldGrid;
+    [SerializeField] private GameObject _newGrid;
+
     private void OnEnable()
     {
         _signs = FindObjectsOfType<ColumnSigns>();
@@ -43,6 +47,11 @@ public class ColumnsSystem : MonoBehaviour
         if(_numberCorrectlyPlacedColumns ==  _signs.Length)
         {
             Debug.Log("рш онаедхк, лнкндеж, цнпфсяэ");
+
+            _oldGrid.SetActive(false);
+            _newGrid.SetActive(false);
+
+
         }
         else
         {

@@ -12,6 +12,7 @@ public class LeverActivator : InteractionItem
 
     [SerializeField] private AudioSource _audioSource;
 
+
     private Quaternion _targetRotation;
     private bool _isActive = false;
 
