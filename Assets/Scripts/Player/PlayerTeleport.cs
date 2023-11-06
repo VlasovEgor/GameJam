@@ -13,6 +13,7 @@ public class PlayerTeleport : MonoBehaviour
     [SerializeField]
     private ParticleSystem particleSys;
 
+    [SerializeField]
     private bool _isActive = false;
 
     void Update()
