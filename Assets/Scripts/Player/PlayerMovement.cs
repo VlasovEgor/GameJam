@@ -122,7 +122,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (grounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.velocity += moveDirection;
+            //rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
             if(moveDirection != Vector3.zero)
             {
                 if (_audioSource.isPlaying) return;
