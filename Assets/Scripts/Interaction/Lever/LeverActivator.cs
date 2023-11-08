@@ -5,7 +5,8 @@ public class LeverActivator : InteractionItem
 {
     [SerializeField] private GameObject _lever;
     [SerializeField] private ActivateColumn _activateColumn;
-    [SerializeField] private Door _door;
+    [SerializeField] private Door _door1;
+    [SerializeField] private Door _door2;
     [Space]
     [SerializeField] private float _speedRotation;
     [SerializeField] private float _angleRotation = -35;
@@ -56,6 +57,7 @@ public class LeverActivator : InteractionItem
         _lever.transform.rotation = _targetRotation;
 
         _activateColumn.SetColumnActive();
-        _door.Open();
+        _door1.Open();
+        _door2.Open();
     }
 }

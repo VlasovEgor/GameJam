@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 
 using UnityEngine;
@@ -18,9 +19,20 @@ public class PlayerTeleport : MonoBehaviour
 
     [SerializeField] private AudioSource _audioSource;
 
+    private bool _inProgress = false;
+
     void Update()
     {
-        if (Input.GetKeyDown(TeleportKey) && _isActive == true)
+        Debug.Log("InPast  " + InPast);
+        if(gameObject.transform.position.x < 43)
+        {
+            InPast = false;
+        }
+        else
+        {
+            InPast = true;
+        }
+        if (Input.GetKeyDown(TeleportKey) && _isActive == true && _inProgress == false)
         {
             StartCoroutine(Teleport());
         }
@@ -33,18 +45,22 @@ public class PlayerTeleport : MonoBehaviour
 
     IEnumerator Teleport()
     {
-        InPast = !InPast;
+        _inProgress = true;
+        
         particleSys.Play();
         _audioSource.Play();
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         particleSys.Stop();
+        
         if (InPast)
-        {
-            gameObject.transform.position += new Vector3(70f, 0f, 0f);
-        }
-        else
         {
             gameObject.transform.position -= new Vector3(70f, 0f, 0f);
         }
+        else
+        {
+            gameObject.transform.position += new Vector3(70f, 0f, 0f);
+        }
+      //  InPast = !InPast;
+        _inProgress = false;
     }
 }

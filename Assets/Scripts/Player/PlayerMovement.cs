@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             if(fallDistance > minimumFall)
             {
                 Debug.Log("Take Damage " + fallDistance);
-                _playerHealth.TakeDamage(fallDistance);
+                _playerHealth.TakeDamage(fallDistance * 5);
             }
         }
 

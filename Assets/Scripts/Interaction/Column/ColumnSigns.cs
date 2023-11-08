@@ -18,7 +18,7 @@ public class ColumnSigns : MonoBehaviour
 
     private void OnEnable()
     {
-        _currnetSign = _signs[_currentIndex];
+       // _currnetSign = _signs[_currentIndex];
 
         _rotateColumn.ColumnTurned += ChangeSign;
     }
@@ -61,10 +61,8 @@ public class ColumnSigns : MonoBehaviour
 
 public enum Signs
 {
-    Eagle,
-    Cat,
-    Dog,
-    Alligator,
+    Bird,
+    Human,
     Eye,
-    Human
+    Ñross
 }
