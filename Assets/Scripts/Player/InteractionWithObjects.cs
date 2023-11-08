@@ -19,7 +19,7 @@ public class InteractionWithObjects : MonoBehaviour
             if(obj.GetComponent<TriggerItem>() == true)
             {
                 var item = obj.GetComponent<TriggerItem>().GetInteractionItem();
-
+                Debug.Log(item);
                 InteractionIsPossible?.Invoke(item);
             }
             
